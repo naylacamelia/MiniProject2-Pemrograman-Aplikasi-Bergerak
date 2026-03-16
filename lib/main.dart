@@ -33,8 +33,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
 
-  print('URL: ${dotenv.env['SUPABASE_URL']}');        // ← tambah sementara
-  print('KEY: ${dotenv.env['SUPABASE_ANON_KEY']}');   // ← tambah sementara
+  print('URL: ${dotenv.env['SUPABASE_URL']}');        
+  print('KEY: ${dotenv.env['SUPABASE_ANON_KEY']}');   
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,
