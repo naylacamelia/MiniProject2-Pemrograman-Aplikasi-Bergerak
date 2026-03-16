@@ -21,6 +21,7 @@ Aplikasi ini merupakan aplikasi mobile sederhana berbasis Flutter yang berfungsi
 | **Unggah Artikel** | Membuat artikel baru dengan mengisi TextFiled yang bersifat wajib (judul, author, dan konten) dan deskripsi judul yang bersifat opsional |
 | **Edit Artikel** | Mengubah artikel yang telah dibuat |
 | **Hapus Artikel** | Menghapus artikel dengan konfirmasi dialog |
+| **Cari Artikel** | Mencari artikel dengan kata kunci berasal dari judul, isi konten dan nama author |
 | **Tema Aplikasi** | Tema aplikasi (dark/light mode) dapat diubah secara manual lewat tombol di halaman utama |
 ---
 
