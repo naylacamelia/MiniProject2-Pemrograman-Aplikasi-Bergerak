@@ -6,7 +6,7 @@
 
 ## 📑 Aplikasi Personal Blog
 
-Aplikasi ini merupakan aplikasi mobile sederhana berbasis Flutter yang berfungsi sebagai platform blogging pribadi. Pengguna dapat menulis artikel dengan judul, deskripsi, nama penulis, dan konten, lalu mempublikasikannya ke halaman utama. Aplikasi ini juga memungkinkan pengguna untuk memodifikasi artikel, mulai dari mengedit hingga menghapus.
+Aplikasi ini merupakan aplikasi mobile sederhana berbasis Flutter yang berfungsi sebagai platform blogging pribadi. Pengguna dapat menulis artikel dengan judul, deskripsi, nama penulis, dan konten, lalu mempublikasikannya ke halaman utama. Aplikasi ini juga memungkinkan pengguna untuk memodifikasi artikel, mulai dari mengedit hingga menghapus artikel yang telah dibuat.
 
 ---
 
@@ -21,7 +21,7 @@ Aplikasi ini merupakan aplikasi mobile sederhana berbasis Flutter yang berfungsi
 | **Unggah Artikel** | Membuat artikel baru dengan mengisi TextFiled yang bersifat wajib (judul, author, dan konten) dan deskripsi judul yang bersifat opsional |
 | **Edit Artikel** | Mengubah artikel yang telah dibuat |
 | **Hapus Artikel** | Menghapus artikel dengan konfirmasi dialog |
-| **Cari Artikel** | Mencari artikel dengan kata kunci berasal dari judul, isi konten dan nama author |
+| **Cari Artikel** | Mencari artikel berdasarkan judul, deskripsi, dan nama author |
 | **Tema Aplikasi** | Tema aplikasi (dark/light mode) dapat diubah secara manual lewat tombol di halaman utama |
 ---
 
@@ -33,7 +33,7 @@ Menyimpan seluruh akun pengguna yang terdaftar pada aplikasi, berikut rinciannya
  
 - `id` — Primary key bertipe UUID, nilainya sama dengan id akun auth user
 - `display_name` — Nama User yang akan ditampilkan sebagai nickname author pada artikel
-- `created_at` — Waktu artikel dibuat, terisi otomatis
+- `created_at` — Waktu profil dibuat, terisi otomatis
 ---
 
 ### Tabel `articles`
