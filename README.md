@@ -1,8 +1,8 @@
-*Nama*: Nayla Camelia Indraswari
+**Nama**: Nayla Camelia Indraswari
 
-*NIM*: 2409116009
+**NIM**: 2409116009
 
-*Kelas*: A
+**Kelas**: A
 
 ## 📑 Aplikasi Personal Blog
 
@@ -14,43 +14,43 @@ Aplikasi ini merupakan aplikasi mobile sederhana berbasis Flutter yang berfungsi
 
 | Fitur | Kegunaan |
 |-----|---|
-| *Registrasi Akun* | Membuat akun baru dengan menginputkan email, nickname, password, dan konfirmasi password|
-| *Login* | Masuk ke aplikasi menggunakan email dan password|
-| *Halaman Utama* | Menampilkan semua artikel yang telah dipublikasikan|
-| *Baca Artikel* | Membuka halaman detail untuk membaca konten artikel secara lengkap |
-| *Unggah Artikel* | Membuat artikel baru dengan mengisi TextFiled yang bersifat wajib (judul, author, dan konten) dan deskripsi judul yang bersifat opsional |
-| *Edit Artikel* | Mengubah artikel yang telah dibuat |
-| *Hapus Artikel* | Menghapus artikel dengan konfirmasi dialog |
-| *Tema Aplikasi* | Tema aplikasi (dark/light mode) dapat diubah secara manual lewat tombol di halaman utama |
+| **Registrasi Akun** | Membuat akun baru dengan menginputkan email, nickname, password, dan konfirmasi password|
+| **Login** | Masuk ke aplikasi menggunakan email dan password|
+| **Halaman Utama** | Menampilkan semua artikel yang telah dipublikasikan|
+| **Baca Artikel** | Membuka halaman detail untuk membaca konten artikel secara lengkap |
+| **Unggah Artikel** | Membuat artikel baru dengan mengisi TextFiled yang bersifat wajib (judul, author, dan konten) dan deskripsi judul yang bersifat opsional |
+| **Edit Artikel** | Mengubah artikel yang telah dibuat |
+| **Hapus Artikel** | Menghapus artikel dengan konfirmasi dialog |
+| **Tema Aplikasi** | Tema aplikasi (dark/light mode) dapat diubah secara manual lewat tombol di halaman utama |
 ---
 
 ## 📑 Struktur Database
 ---
-### Tabel profiles
+### Tabel `profiles`
  
 Menyimpan seluruh akun pengguna yang terdaftar pada aplikasi, berikut rinciannya:
  
-- id — Primary key bertipe UUID, nilainya sama dengan id akun auth user
-- display_name — Nama User yang akan ditampilkan sebagai nickname author pada artikel
-- created_at — Waktu artikel dibuat, terisi otomatis
+- `id` — Primary key bertipe UUID, nilainya sama dengan id akun auth user
+- `display_name` — Nama User yang akan ditampilkan sebagai nickname author pada artikel
+- `created_at` — Waktu artikel dibuat, terisi otomatis
 ---
 
-### Tabel articles
+### Tabel `articles`
  
 Menyimpan seluruh artikel yang ditulis oleh pengguna. Setiap artikel terhubung ke user yang membuatnya melalui kolom user_id.
-- id — Primary key bertipe UUID, di-generate otomatis oleh database menggunakan gen_random_uuid()
-- title — Judul artikel, wajib diisi
-- description — Deskripsi singkat artikel, opsional
-- content — Isi artikel, wajib diisi
-- author — Nama author yang diambil, diperoleh dari *display_name* di tabel *profiles*
-- user_id — UUID yang merujuk ke akun auth pemilik artikel
-- status — Status artikel, default *published*
-- created_at — Waktu artikel dibuat, terisi otomatis
-- updated_at — Waktu artikel terakhir diubah/edit
+- `id` — Primary key bertipe UUID, di-generate otomatis oleh database menggunakan `gen_random_uuid()`
+- `title` — Judul artikel, wajib diisi
+- `description` — Deskripsi singkat artikel, opsional
+- `content` — Isi artikel, wajib diisi
+- `author` — Nama author yang diambil, diperoleh dari **display_name** di tabel **profiles**
+- `user_id` — UUID yang merujuk ke akun auth pemilik artikel
+- `status` — Status artikel, default **published**
+- `created_at` — Waktu artikel dibuat, terisi otomatis
+- `updated_at` — Waktu artikel terakhir diubah/edit
 
 ## 🔒 Keamanan Database (RLS)
  
-### Tabel articles
+### Tabel `articles`
  
 - Semua user dapat membaca semua artikel yang dipublikasikan (oleh semua user)
 - User hanya dapat membuat artikel menggunakan akunnya sendiri
@@ -60,7 +60,7 @@ Menyimpan seluruh artikel yang ditulis oleh pengguna. Setiap artikel terhubung k
 
 Aplikasi memiliki struktur kode yang dibedakan berdasarkan folder sesuai dengan kegunaannya, dengan rincian sebagai berikut:
 
-
+```
 lib/
 ├── controllers/
 │   └── theme_controller.dart   
@@ -74,17 +74,17 @@ lib/
 │   ├── login_page.dart         
 │   └── regis_page.dart         
 └── main.dart              
+```
 
-
-- *main.dart* : awal mula berjalannya aplikasi, konfigurasi tema light dan dark mode, serta inisialisasi koneksi ke Supabase
-- *controllers/theme_controller.dart* : Mengatur perpindahan dark mode dan light mode menggunakan GetX
-- *models/article.dart* : struktur data artikel beserta logika parsing data dari Supabase
-- *pages/auth_page.dart* : Gerbang akses aplikasi. Mendeteksi session aktif dan mengarahkan user ke halaman yang sesuai
-- *pages/home_page.dart* : Beranda aplikasi. Menampilkan seluruh daftar artikel dari Supabase dan menjadi pusat navigasi untuk membaca, membuat, mengedit, serta menghapus artikel
-- *pages/detail_page.dart* : Halaman untuk membaca isi artikel secara lengkap beserta info author dan tanggal publikasi
-- *pages/posting_page.dart* : Halaman untuk menulis dan mengedit artikel. Author terisi otomatis dari profil yang sedang login
-- *pages/login_page.dart* : Halaman masuk aplikasi menggunakan email dan password
-- *pages/regis_page.dart* : Halaman pembuatan akun baru dengan menginputkan email, nickname, dan password
+- **main.dart** : awal mula berjalannya aplikasi, konfigurasi tema light dan dark mode, serta inisialisasi koneksi ke Supabase
+- **controllers/theme_controller.dart** : Mengatur perpindahan dark mode dan light mode menggunakan GetX
+- **models/article.dart** : struktur data artikel beserta logika parsing data dari Supabase
+- **pages/auth_page.dart** : Gerbang akses aplikasi. Mendeteksi session aktif dan mengarahkan user ke halaman yang sesuai
+- **pages/home_page.dart** : Beranda aplikasi. Menampilkan seluruh daftar artikel dari Supabase dan menjadi pusat navigasi untuk membaca, membuat, mengedit, serta menghapus artikel
+- **pages/detail_page.dart** : Halaman untuk membaca isi artikel secara lengkap beserta info author dan tanggal publikasi
+- **pages/posting_page.dart** : Halaman untuk menulis dan mengedit artikel. Author terisi otomatis dari profil yang sedang login
+- **pages/login_page.dart** : Halaman masuk aplikasi menggunakan email dan password
+- **pages/regis_page.dart** : Halaman pembuatan akun baru dengan menginputkan email, nickname, dan password
 
 ---
 
@@ -94,21 +94,21 @@ lib/
 <summary><b>Layout & Struktur Aplikasi</b></summary>
 <br>
  
-- *GetMaterialApp* — Widget root aplikasi dari GetX, menggantikan MaterialApp standar. Mendukung navigasi GetX dan manajemen tema
-- *Scaffold* — Kerangka dasar setiap halaman yang menyediakan struktur AppBar, body, FloatingActionButton, dan BottomNavigationBar
-- *AppBar* — Header halaman untuk menempatkan judul, tombol navigasi, tombol aksi, dan garis pemisah di bagian bawah
-- *BottomNavigationBar* — Navigasi tab di bagian bawah layar untuk berpindah antara tab Explore dan My Blog
-- *SafeArea* — Memastikan konten tidak tertutup elemen sistem seperti notch atau status bar
-- *Center* — Memusatkan child secara horizontal dan vertikal di dalam ruang yang tersedia
-- *ConstrainedBox* — Membatasi ukuran child sesuai constraints yang ditentukan, digunakan untuk mengatur lebar maksimal konten
-- *Column* — Menyusun widget secara vertikal dari atas ke bawah
-- *Row* — Menyusun widget secara horizontal dalam satu baris
-- *Padding* — Memberikan jarak di sekeliling atau sisi tertentu dari sebuah widget
-- *Container* — Widget serbaguna untuk menambahkan dekorasi, warna, ukuran, dan padding pada child
-- *SizedBox* — Memberikan jarak kosong antar widget atau memaksa ukuran tertentu pada widget
-- *Expanded* — Membuat child mengisi semua ruang yang tersisa di dalam Row atau Column
-- *Align* — Mengatur posisi child di dalam parent ke posisi tertentu
-- *PreferredSize* — Membungkus widget agar dapat digunakan sebagai bottom AppBar dengan ukuran eksplisit
+- **GetMaterialApp** — Widget root aplikasi dari GetX, menggantikan `MaterialApp` standar. Mendukung navigasi GetX dan manajemen tema
+- **Scaffold** — Kerangka dasar setiap halaman yang menyediakan struktur AppBar, body, FloatingActionButton, dan BottomNavigationBar
+- **AppBar** — Header halaman untuk menempatkan judul, tombol navigasi, tombol aksi, dan garis pemisah di bagian bawah
+- **BottomNavigationBar** — Navigasi tab di bagian bawah layar untuk berpindah antara tab Explore dan My Blog
+- **SafeArea** — Memastikan konten tidak tertutup elemen sistem seperti notch atau status bar
+- **Center** — Memusatkan child secara horizontal dan vertikal di dalam ruang yang tersedia
+- **ConstrainedBox** — Membatasi ukuran child sesuai constraints yang ditentukan, digunakan untuk mengatur lebar maksimal konten
+- **Column** — Menyusun widget secara vertikal dari atas ke bawah
+- **Row** — Menyusun widget secara horizontal dalam satu baris
+- **Padding** — Memberikan jarak di sekeliling atau sisi tertentu dari sebuah widget
+- **Container** — Widget serbaguna untuk menambahkan dekorasi, warna, ukuran, dan padding pada child
+- **SizedBox** — Memberikan jarak kosong antar widget atau memaksa ukuran tertentu pada widget
+- **Expanded** — Membuat child mengisi semua ruang yang tersisa di dalam Row atau Column
+- **Align** — Mengatur posisi child di dalam parent ke posisi tertentu
+- **PreferredSize** — Membungkus widget agar dapat digunakan sebagai `bottom` AppBar dengan ukuran eksplisit
 
   
 </details>
@@ -119,8 +119,8 @@ lib/
 <summary><b>Scroll & List</b></summary>
 <br>
 
-- *SingleChildScrollView* — Membuat konten yang melebihi ukuran layar dapat di-scroll
-- *ListView.builder* — Menampilkan daftar item secara dinamis dan efisien, hanya merender item yang terlihat di layar
+- **SingleChildScrollView** — Membuat konten yang melebihi ukuran layar dapat di-scroll
+- **ListView.builder** — Menampilkan daftar item secara dinamis dan efisien, hanya merender item yang terlihat di layar
 
 </details>
 
@@ -130,9 +130,9 @@ lib/
 <summary><b>Input & Form</b></summary>
 <br>
 
-- *Form* — Membungkus kumpulan TextFormField dan mengelola validasi seluruh field sekaligus menggunakan GlobalKey<FormState>
-- *TextFormField* — Input teks yang terintegrasi dengan Form, mendukung validasi bawaan dengan pesan error di bawah field
-- *TextField* — Input teks tanpa integrasi Form, digunakan untuk tampilan yang bersih tanpa border pada halaman tulis artikel
+- **Form** — Membungkus kumpulan `TextFormField` dan mengelola validasi seluruh field sekaligus menggunakan `GlobalKey<FormState>`
+- **TextFormField** — Input teks yang terintegrasi dengan `Form`, mendukung validasi bawaan dengan pesan error di bawah field
+- **TextField** — Input teks tanpa integrasi Form, digunakan untuk tampilan yang bersih tanpa border pada halaman tulis artikel
   
 </details>
 
@@ -142,14 +142,14 @@ lib/
 <summary><b>Tombol</b></summary>
 <br>
 
-- *ElevatedButton* — Tombol dengan tampilan menonjol, digunakan sebagai tombol utama seperti Sign In, Publish, dan Update
-- *TextButton* — Tombol teks tanpa background, digunakan sebagai tombol aksi di dalam AlertDialog
-- *IconButton* — Tombol berbentuk ikon untuk toggle tema, logout, tombol back, dan show/hide password
-- *FloatingActionButton* — Tombol aksi melayang di pojok kanan bawah, ditampilkan hanya di tab My Blog
-- *GestureDetector* — Mendeteksi gesture tap tanpa efek visual, digunakan pada teks navigasi antar halaman auth
-- *InkWell* — Area yang bisa di-tap dengan efek ripple, digunakan pada card artikel di tab Explore
-- *PopupMenuButton* — Menampilkan menu pilihan saat ikon ditekan, digunakan untuk opsi Edit dan Delete artikel
-- *PopScope* — Mengontrol perilaku tombol back sistem untuk mencegah user keluar tanpa sengaja saat menulis artikel
+- **ElevatedButton** — Tombol dengan tampilan menonjol, digunakan sebagai tombol utama seperti Sign In, Publish, dan Update
+- **TextButton** — Tombol teks tanpa background, digunakan sebagai tombol aksi di dalam AlertDialog
+- **IconButton** — Tombol berbentuk ikon untuk toggle tema, logout, tombol back, dan show/hide password
+- **FloatingActionButton** — Tombol aksi melayang di pojok kanan bawah, ditampilkan hanya di tab My Blog
+- **GestureDetector** — Mendeteksi gesture tap tanpa efek visual, digunakan pada teks navigasi antar halaman auth
+- **InkWell** — Area yang bisa di-tap dengan efek ripple, digunakan pada card artikel di tab Explore
+- **PopupMenuButton** — Menampilkan menu pilihan saat ikon ditekan, digunakan untuk opsi Edit dan Delete artikel
+- **PopScope** — Mengontrol perilaku tombol back sistem untuk mencegah user keluar tanpa sengaja saat menulis artikel
 
 </details>
 
@@ -159,12 +159,12 @@ lib/
 <summary><b>Tampilan & Dekorasi</b></summary>
 <br>
 
-- *Card* — Menampilkan konten dalam kotak dengan elevasi dan border, digunakan untuk artikel di tab My Blog
-- *AlertDialog* — Dialog pop-up untuk konfirmasi aksi penting seperti Sign Out, Delete, dan konfirmasi keluar draft
-- *CircleAvatar* — Menampilkan inisial atau ikon dalam bentuk lingkaran, digunakan untuk avatar penulis artikel
-- *Icon* — Menampilkan ikon dari koleksi Material Icons
-- *Divider* — Garis horizontal tipis sebagai pemisah antar konten
-- *CircularProgressIndicator* — Animasi loading berbentuk lingkaran, ditampilkan saat fetch data atau proses autentikasi
+- **Card** — Menampilkan konten dalam kotak dengan elevasi dan border, digunakan untuk artikel di tab My Blog
+- **AlertDialog** — Dialog pop-up untuk konfirmasi aksi penting seperti Sign Out, Delete, dan konfirmasi keluar draft
+- **CircleAvatar** — Menampilkan inisial atau ikon dalam bentuk lingkaran, digunakan untuk avatar penulis artikel
+- **Icon** — Menampilkan ikon dari koleksi Material Icons
+- **Divider** — Garis horizontal tipis sebagai pemisah antar konten
+- **CircularProgressIndicator** — Animasi loading berbentuk lingkaran, ditampilkan saat fetch data atau proses autentikasi
 
 </details>
 
@@ -174,9 +174,9 @@ lib/
 <summary><b>State Management & Asynchronous UI</b></summary>
 <br>
 
-- *StreamBuilder* —  Membangun UI berdasarkan data yang terus berubah secara realtime. Digunakan untuk mendengarkan perubahan status login dari Supabase dan mengarahkan user ke halaman yang sesuai
-- *FutureBuilder* — Membangun UI berdasarkan hasil proses yang membutuhkan waktu. Digunakan untuk mengecek apakah profil user sudah ada setelah status login terdeteksi
-- *Obx* — Widget dari GetX yang otomatis memperbarui tampilan saat ada nilai yang berubah. Digunakan untuk tombol toggle tema dan judul AppBar agar ikut berubah saat tema atau tab aktif berganti
+- **StreamBuilder** —  Membangun UI berdasarkan data yang terus berubah secara realtime. Digunakan untuk mendengarkan perubahan status login dari Supabase dan mengarahkan user ke halaman yang sesuai
+- **FutureBuilder** — Membangun UI berdasarkan hasil proses yang membutuhkan waktu. Digunakan untuk mengecek apakah profil user sudah ada setelah status login terdeteksi
+- **Obx** — Widget dari GetX yang otomatis memperbarui tampilan saat ada nilai yang berubah. Digunakan untuk tombol toggle tema dan judul AppBar agar ikut berubah saat tema atau tab aktif berganti
 
 </details>
 
@@ -184,12 +184,12 @@ lib/
 
 ## ⚙️ Dependencies Tamabahan
  
-- *supabase_flutter* : Package untuk menghubungkan aplikasi Flutter dengan Supabase, mencakup autentikasi dan operasi database
-- *get* : Package GetX untuk navigasi antar halaman dan manajemen perubahan tema aplikasi
-- *google_fonts* : Package untuk menggunakan font dari Google Fonts, digunakan untuk font Rubik dan Merriweather di seluruh aplikasi
-- *flutter_dotenv* : Package untuk membaca file .env, digunakan untuk menyimpan Supabase URL dan API Key agar tidak ter-expose di kode dan tidak ter-upload ke GitHub
+- **supabase_flutter** : Package untuk menghubungkan aplikasi Flutter dengan Supabase, mencakup autentikasi dan operasi database
+- **get** : Package GetX untuk navigasi antar halaman dan manajemen perubahan tema aplikasi
+- **google_fonts** : Package untuk menggunakan font dari Google Fonts, digunakan untuk font Rubik dan Merriweather di seluruh aplikasi
+- **flutter_dotenv** : Package untuk membaca file `.env`, digunakan untuk menyimpan Supabase URL dan API Key agar tidak ter-expose di kode dan tidak ter-upload ke GitHub
  
-yaml
+```yaml
 dependencies:
   flutter:
     sdk: flutter
@@ -198,19 +198,19 @@ dependencies:
   get: ^4.7.3
   supabase_flutter: ^2.12.0
   flutter_dotenv: ^5.1.0
-
+```
 ---
 ## 🔐 Environment Variables
  
-Aplikasi ini menggunakan file .env untuk menyimpan kredensial Supabase. File ini tidak ikut di-upload ke GitHub karena sudah didaftarkan di .gitignore.
+Aplikasi ini menggunakan file `.env` untuk menyimpan kredensial Supabase. File ini tidak ikut di-upload ke GitHub karena sudah didaftarkan di `.gitignore`.
  
-Membuat file .env di root project yang beriisi Supabase URL dan API Key lalu daftarkan sebagai asset di pubspec.yaml:
+Membuat file `.env` di root project yang beriisi Supabase URL dan API Key lalu daftarkan sebagai asset di `pubspec.yaml`:
  
-yaml
+```yaml
 flutter:
   assets:
     - .env
-
+```
 ---
 ## 🔍 Tampilan Aplikasi
  
